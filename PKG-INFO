@@ -1,0 +1,33 @@
+Metadata-Version: 1.0
+Name: django-editarea
+Version: 0.1
+Summary: A Django application that contains a widget to render a form field as an EditArea editor.
+Home-page: http://www.wefoundland.com/project/Django-EditArea
+Author: Aditya Bhargava
+Author-email: aditya@wefoundland.com
+License: LGPL License
+Download-URL: http://www.wefoundland.com/project/Django-EditArea/djeditarea.zip
+Description: 
+    Django-EditArea is a widget for Django. It adds HTML syntax highlighting to
+    TextField fields on the admin side. 
+	
+	Django-EditArea is based on EditArea, so it has a whole bunch of features:
+	
+	* Real-time syntax highlighting
+	* Search and replace (with regular expressions too!)
+	* Auto-indenting
+	* Line numbering
+	* Full screen mode
+	* Very easy to add to a new site or an existing one Ð no complicated setup
+		                
+Keywords: django widget editarea syntax highlight
+Platform: any
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Application Frameworks
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
