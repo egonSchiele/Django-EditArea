@@ -19,6 +19,7 @@ Django-EditArea is based on EditArea, so it has a whole bunch of features:
 * Line numbering
 * Full screen mode
 * Works alongside popular javascript libraries
+* Can be used as a widget in forms
 * Very easy to add to a new site or an existing one Ð no complicated setup
 
 ============
