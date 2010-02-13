@@ -5,7 +5,7 @@ from distutils.core import setup
 setup(
     name = "Django-EditArea",
     version = "1.0",
-	py_modules=['editarea.py'],
+	py_modules=['editarea'],
     author = "Aditya Bhargava",
     author_email = "aditya@wefoundland.com",
     description = "A Django application that contains a widget to render a form field as an EditArea editor.",
