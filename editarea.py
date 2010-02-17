@@ -22,8 +22,21 @@ class EditArea(Textarea):
     variable in settings.py that contains the path to that folder. For example:
     
     EDITAREA_JS_FOLDER = "/path/to/my/project/app/media/scripts/"
-    
     *Dont forget the trailing slash.*
+    
+    Another option that you can specify in settings.py is EDITAREA_DEFAULT_ARGS
+    This attribute should be a function that gets 'textarea_id' as an
+    only argument and returns a string containing a valid JavaScript 
+    code that is used as an argument for editAreaLoader.init inside  
+    the template. If it is not defined, then default editarea settings
+    will be used. Common example of that would be:
+    
+    EDITAREA_DEFAULT_ARGS = lambda textarea_id:\
+        '{ id: "'+textarea_id+'", syntax: "html", start_highlight: true }'
+    
+    See EditArea documentation for all possible editAreaLoader.init arguments:
+        http://www.cdolivet.com/editarea/editarea/docs/
+    
     """
 
     settings = {}
@@ -43,25 +56,24 @@ class EditArea(Textarea):
         except AttributeError:
             js_url = settings.MEDIA_URL + "js/"
         
-        print((attrs))
-        
+        try:
+            default_editarea_args =\
+                settings.EDITAREA_DEFAULT_ARGS(textarea_id)
+        except AttributeError:
+            default_editarea_args = '{id : "' + textarea_id + '" }'
+            
+        editarea_args = default_editarea_args
         return mark_safe(u"""
         <textarea{final_attrs}>{value}</textarea>
         <script src="{js_url}editarea/edit_area_loader.js"></script>
         <script>
-            editAreaLoader.init({{
-                id : "{textarea_id}"        // textarea id
-                ,syntax: "html"            // syntax to be uses for highgliting
-                ,start_highlight: true        // to display with highlight mode on start-up
-                ,min_width: 700
-                ,min_height: 250
-                ,word_wrap: true
-                }});
+            editAreaLoader.init({editarea_args});
         </script>
         """.format(final_attrs=flatatt(final_attrs),
-                   value=escape(value), 
-                   js_url=js_url, 
-                   textarea_id=textarea_id))
+                   value=escape(value),
+                   js_url=js_url,
+                   editarea_args=editarea_args))
+        
 
 
 # Custom Fields
