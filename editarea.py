@@ -36,7 +36,7 @@ class EditArea(Textarea):
  		if value is None: value = ''
 		value = smart_unicode(value)
 		final_attrs = self.build_attrs(attrs, name=name)
-		textarea_id = self.settings['id'] = "id_%s" % name
+		textarea_id = self.settings['id'] = "id_{0}".format(name)
 		
 		try:
 			js_url = settings.EDITAREA_JS_FOLDER
@@ -44,19 +44,22 @@ class EditArea(Textarea):
 			js_url = settings.MEDIA_URL + "js/"
 		
 		return mark_safe(u"""
-		<textarea%s>%s</textarea>
-		<script src="%seditarea/edit_area_loader.js"></script>
+		<textarea{final_attrs}>{value}</textarea>
+		<script src="{js_url}editarea/edit_area_loader.js"></script>
 		<script>
-			editAreaLoader.init({
-				id : "%s"		// textarea id
+			editAreaLoader.init({{
+				id : "{textarea_id}"		// textarea id
 				,syntax: "html"			// syntax to be uses for highgliting
 				,start_highlight: true		// to display with highlight mode on start-up
 				,min_width: 700
 				,min_height: 250
 				,word_wrap: true
-				});
+				}});
 		</script>
-		""" % (flatatt(final_attrs), escape(value),js_url,textarea_id))
+		""".format(final_attrs=flatatt(final_attrs),
+                   value=escape(value), 
+                   js_url=js_url, 
+                   textarea_id=textarea_id))
 
 
 # Custom Fields
