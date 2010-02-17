@@ -34,6 +34,11 @@ class EditArea(Textarea):
     EDITAREA_DEFAULT_ARGS = lambda textarea_id:\
         '{ id: "'+textarea_id+'", syntax: "html", start_highlight: true }'
     
+    Note: If this function returns a falsy value, then editAreaLoader.init
+    is not called automatically and you should init it inside the template.
+    This comes handy when you need to call editAreaLoader.init with options
+    depending on other variables than just 'textarea_id'.  
+    
     See EditArea documentation for all possible editAreaLoader.init arguments:
         http://www.cdolivet.com/editarea/editarea/docs/
     
@@ -63,18 +68,19 @@ class EditArea(Textarea):
             default_editarea_args = '{id : "' + textarea_id + '" }'
             
         editarea_args = default_editarea_args
+        init_script = '' if not editarea_args else\
+        "<script>"\
+            "editAreaLoader.init("+editarea_args+");"\
+        "</script>"
+            
         return mark_safe(u"""
         <textarea{final_attrs}>{value}</textarea>
         <script src="{js_url}editarea/edit_area_loader.js"></script>
-        <script>
-            editAreaLoader.init({editarea_args});
-        </script>
         """.format(final_attrs=flatatt(final_attrs),
                    value=escape(value),
-                   js_url=js_url,
-                   editarea_args=editarea_args))
-        
-
+                   js_url=js_url)
+        + init_script
+        )
 
 # Custom Fields
 from django.db import models
