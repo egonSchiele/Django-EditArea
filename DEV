@@ -1,0 +1,3 @@
+Any time the souce is changed, please make a new public distribution by running 
+
+python setup.py sdist
