@@ -54,7 +54,7 @@ class EditArea(Textarea):
         if value is None: value = ''
         value = smart_unicode(value)
         final_attrs = self.build_attrs(attrs, name=name)
-        textarea_id = self.settings['id'] = "id_{0}".format(name)
+        textarea_id = self.settings['id'] = "id_%s" % name
         
         try:
             js_url = settings.EDITAREA_JS_FOLDER
@@ -74,11 +74,11 @@ class EditArea(Textarea):
         "</script>"
             
         return mark_safe(u"""
-        <textarea{final_attrs}>{value}</textarea>
-        <script src="{js_url}editarea/edit_area_loader.js"></script>
-        """.format(final_attrs=flatatt(final_attrs),
-                   value=escape(value),
-                   js_url=js_url)
+        <textarea %s>%s</textarea>
+        <script src="%seditarea/edit_area_loader.js"></script>
+        """ % (flatatt(final_attrs),
+                   escape(value),
+                   js_url)
         + init_script
         )
 
