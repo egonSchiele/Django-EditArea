@@ -68,10 +68,12 @@ class EditArea(Textarea):
             default_editarea_args = '{id : "' + textarea_id + '" }'
             
         editarea_args = default_editarea_args
-        init_script = '' if not editarea_args else\
-        "<script>"\
-            "editAreaLoader.init("+editarea_args+");"\
-        "</script>"
+        init_script = ''
+        if editarea_args:
+            init_script = \ 
+            "<script>"\
+                "editAreaLoader.init("+editarea_args+");"\
+            "</script>"
             
         return mark_safe(u"""
         <textarea %s>%s</textarea>
