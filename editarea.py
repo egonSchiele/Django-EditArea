@@ -70,7 +70,7 @@ class EditArea(Textarea):
         editarea_args = default_editarea_args
         init_script = ''
         if editarea_args:
-            init_script = \ 
+            init_script = \
             "<script>"\
                 "editAreaLoader.init("+editarea_args+");"\
             "</script>"
