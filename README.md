@@ -2,6 +2,9 @@
 
 Django-EditArea is a widget for Django. It adds syntax highlighting to `TextField` fields on the admin side. 
 
+**This project is looking for a new maintainer! Please let me know if you'd like to maintain the project.**
+
+
 # Features
 
 Django-EditArea is based on EditArea, so it has a whole bunch of features:
@@ -58,8 +61,9 @@ This should be the path to the folder that contains the editarea folder. i.e. do
 
 # Credits
 
-DjEditArea copyright (c) Aditya Bhargava @ wefoundland.com
-EditArea copyright (c) Christophe Dolivet @ cdolivet.com
+DjEditArea copyright (c) [Aditya Bhargava](http://adit.io)
+
+EditArea copyright (c) [Christophe Dolivet](http://cdolivet.com)
 
 # Contributors
 Marcin Biernat
