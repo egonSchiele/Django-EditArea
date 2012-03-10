@@ -61,7 +61,7 @@ This should be the path to the folder that contains the editarea folder. i.e. do
 
 # Credits
 
-DjEditArea copyright (c) [Aditya Bhargava](http://adit.io)
+Django-EditArea copyright (c) [Aditya Bhargava](http://adit.io)
 
 EditArea copyright (c) [Christophe Dolivet](http://cdolivet.com)
 
