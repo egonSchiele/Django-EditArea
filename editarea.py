@@ -8,7 +8,7 @@ Django-EditArea adds syntax highlighting. Use EditAreaField instead of TextField
 
 from django.conf import settings
 from django.forms import *
-from django.forms.widgets import flatatt
+from django.forms.utils import flatatt
 from django.utils.encoding import smart_unicode
 from django.utils.html import escape
 from django.utils.simplejson import *
